@@ -1,0 +1,11 @@
+body {
+    display: grid;
+    transition: all 0.5s;
+    user-select: none;
+    background: orangered;
+    background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+    );
+}
