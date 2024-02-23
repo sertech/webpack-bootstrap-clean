@@ -8,8 +8,9 @@ module.exports = {
         shared: 'lodash',
     },
     output: {
-        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+        assetModuleFilename: '[name][ext]',
     },
     module: {
         rules: [
@@ -23,6 +24,10 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(png|svg|jpeg|jpg|gif)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     optimization: {
@@ -30,5 +35,11 @@ module.exports = {
             chunks: 'all',
         },
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'SAP webpack workflow',
+            filename: 'index.html',
+            template: 'src/templates/template.html',
+        }),
+    ],
 };
