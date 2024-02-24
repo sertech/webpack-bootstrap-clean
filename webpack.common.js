@@ -6,11 +6,7 @@ module.exports = {
         index: { import: './src/js/index.js', dependOn: 'shared' },
         sum: { import: './src/js/sum.js', dependOn: 'shared' },
         shared: 'lodash',
-    },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].bundle.js',
-        assetModuleFilename: '[name][ext]',
+        vendor: './src/js/vendor.js',
     },
     module: {
         rules: [
@@ -25,12 +21,17 @@ module.exports = {
                 },
             },
             {
+                test: /\.html/,
+                use: ['html-loader'],
+            },
+            {
                 test: /\.(png|svg|jpeg|jpg|gif)$/i,
                 type: 'asset/resource',
             },
         ],
     },
     optimization: {
+        runtimeChunk: 'single',
         splitChunks: {
             chunks: 'all',
         },
