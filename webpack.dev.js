@@ -4,6 +4,9 @@ const path = require('path');
 
 module.exports = merge(common, {
     mode: 'development',
+    stats: {
+        loggingDebug: ['sass-loader'],
+    },
     output: {
         // this output is for the browser
         filename: '[name].bundle.js',
